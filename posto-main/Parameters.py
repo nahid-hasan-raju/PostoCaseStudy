@@ -99,3 +99,21 @@ else:
         exit(0)
     
 
+
+# ==========================================
+# AutMod System Parameters
+
+AUTMOD_DT = 0.001  # time step for Euler integration
+AUTMOD_TOTAL_TIME = 10.0  # total simulation time in seconds
+
+AUTMOD_X0 = 0.5  # initial x position
+AUTMOD_Y0 = 0.5  # initial y position
+
+AUTMOD_LOG_PROBABILITY = 0.2  # probability of logging each time step (0.2 = 20%)
+AUTMOD_NOISE_STD = 0.05  # standard deviation of Gaussian measurement noise
+
+AUTMOD_X_LIMIT = 3.0  # maximum absolute x value
+AUTMOD_Y_LIMIT = 3.0  # maximum absolute y value
+AUTMOD_MAX_DISTANCE = 5.0  # maximum distance from origin
+
+AUTMOD_NUM_TRAJECTORIES = 4  # number of random trajectories to generate

@@ -2,21 +2,44 @@ import numpy as np
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
 import random
+import os, sys
 
-# Configuration parameters
-dt = 0.001  # time step
-total_time = 10.0  # simulate for 10 seconds
-x0 = 0.5  # starting x
-y0 = 0.5  # starting y
+sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'posto-main'))
+import Parameters as params
+
+# # Configuration parameters
+# dt = 0.001  # time step
+# total_time = 10.0  # simulate for 10 seconds
+# x0 = 0.5  # starting x
+# y0 = 0.5  # starting y
+
+# # Logging settings
+# log_chance = 0.2  # 20% chance to log each step
+# noise_level = 0.05  # how much noise in measurements
+
+# # Safety limits
+# x_limit = 3.0
+# y_limit = 3.0
+# max_distance = 5.0
+
+
+# Import configuration from Parameters.py
+dt = params.AUTMOD_DT
+total_time = params.AUTMOD_TOTAL_TIME
+x0 = params.AUTMOD_X0
+y0 = params.AUTMOD_Y0
 
 # Logging settings
-log_chance = 0.2  # 20% chance to log each step
-noise_level = 0.05  # how much noise in measurements
+log_chance = params.AUTMOD_LOG_PROBABILITY
+noise_level = params.AUTMOD_NOISE_STD
 
 # Safety limits
-x_limit = 3.0
-y_limit = 3.0
-max_distance = 5.0
+x_limit = params.AUTMOD_X_LIMIT
+y_limit = params.AUTMOD_Y_LIMIT
+max_distance = params.AUTMOD_MAX_DISTANCE
+
+# Multiple trajectory parameters
+num_trajectories = params.AUTMOD_NUM_TRAJECTORIES
 
 
 def simulate_system(x_start, y_start, time_total, time_step):
@@ -249,7 +272,6 @@ else:
 
 # Multiple trajectories
 print("\n4. Generating multiple random trajectories....")
-num_trajectories = 3
 
 fig = plt.figure(figsize=(10, 8))
 ax = fig.add_subplot(111, projection='3d')
@@ -279,18 +301,16 @@ plt.show()
 
 # Show visualizations for main trajectory
 print("\n5. Creating visualizations...")
-print("   - 3D trajectory plot")
+print("3D trajectory plot")
 plot_3d_trajectory(times, x_vals, y_vals)
 
-print("   - Phase portrait")
+print("Phase portrait")
 plot_phase_portrait(x_vals, y_vals)
 
-print("   - Time series")
+print("Time series")
 plot_time_series(times, x_vals, y_vals)
 
-print("   - Logs comparison")
+print("Logs comparison")
 plot_logs_vs_true(times, x_vals, y_vals, logs)
 
 print("\n" + "="*60)
-print("All experiments complete!")
-print("="*60)
