@@ -228,11 +228,11 @@ logs = create_logs(times, x_vals, y_vals, log_chance)
 print(f"   Created {len(logs)} log entries")
 # print(f"   That's {len(logs)/len(times)*100:.1f}% of all points")
 
-# # Some example logs
-# print("\n   Sample logs:")
-# for i in range(min(5, len(logs))):
-#     log = logs[i]
-#     print(f"   Step {log['step']}: t={log['time']:.3f}s, x={log['x']:.3f}, y={log['y']:.3f}")
+# Some example logs
+print("\n   Sample logs:")
+for i in range(min(5, len(logs))):
+    log = logs[i]
+    print(f"   Step {log['step']}: t={log['time']:.3f}s, x={log['x']:.3f}, y={log['y']:.3f}")
 
 #  Safety monitoring
 print("\n3. Checking safety constraints......")
